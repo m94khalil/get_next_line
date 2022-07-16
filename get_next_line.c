@@ -6,7 +6,7 @@
 /*   By: mkhalil <mkhalil@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:35:11 by mkhalil           #+#    #+#             */
-/*   Updated: 2022/07/16 12:53:38 by mkhalil          ###   ########.fr       */
+/*   Updated: 2022/07/16 14:00:52 by mkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,14 @@ char	*file_remains(char *content, char *line)
 	if (line == 0)
 		return (content);
 	i = ft_strlen(line);
-	remain = malloc(sizeof(char) * (i + 1));
-	if (remain == 0)
+	j = ft_strlen(content);
+	if (j - i == 0)
+	{
+		free(content);
+		return (NULL);
+	}
+	remain = malloc(sizeof(char) * (ft_strlen(content) - i + 1));
+	if (remain == NULL)
 		return (NULL);
 	j = 0;
 	while (content[i])
@@ -95,16 +101,19 @@ char	*get_next_line(int fd)
 	content = file_remains(content, line);
 	return (line);
 }
-/*
-#include <stdio.h>
+
 int main()
 {
 	int	fd;
 	char *line;
 	
 	fd = open("test.txt", O_RDONLY);
-	line = get_next_line(fd);
-	printf("%s", line);
+	/*do {
+		line = get_next_line(fd);
+		printf("%s", line);
+	} while (line != NULL);
+	*/
+	printf("%lu, %s",read(fd, line, BUFFER_SIZE), line);
 	close(fd);
 	return (0);
-}*/
+}

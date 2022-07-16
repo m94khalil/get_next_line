@@ -6,7 +6,7 @@
 /*   By: mkhalil <mkhalil@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:30:52 by mkhalil           #+#    #+#             */
-/*   Updated: 2022/07/16 12:05:16 by mkhalil          ###   ########.fr       */
+/*   Updated: 2022/07/16 14:03:09 by mkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strchr(const char *str, int c)
 {
 	if (str == NULL)
 		return (NULL);
-	while (*str != (char)c && *str != 0)
+	while (*str != (char)c && *str != '\0')
 		str++;
 	if (*str == (char)c)
 		return ((char *)str);
@@ -37,27 +37,26 @@ char	*ft_strchr(const char *str, int c)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int		i;
-	int		flag;
+	size_t		i;
 	char	*join;
 
-	flag = 0;
-	if (s1 == 0)
+	if (s1 == NULL)
 	{
-		flag = 1;
 		s1 = malloc(sizeof(char));
 		s1[0] = '\0';
 	}
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	join = (char *) malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (join == 0 || s1 == 0 || s2 == 0)
+	if (join == NULL)
 		return (NULL);
 	i = -1;
 	while (s1[++i])
 		join[i] = s1[i];
 	while (*s2)
 		join[i++] = *s2++;
+	printf("%lu, %lu y", i, ft_strlen(s1) + ft_strlen(s2));
 	join[i] = 0;
-	if (flag)
-		free(s1);
+	free(s1);
 	return (join);
 }
