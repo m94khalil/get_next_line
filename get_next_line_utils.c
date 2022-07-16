@@ -55,7 +55,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		join[i] = s1[i];
 	while (*s2)
 		join[i++] = *s2++;
-	printf("%lu, %lu y", i, ft_strlen(s1) + ft_strlen(s2));
 	join[i] = 0;
 	free(s1);
 	return (join);

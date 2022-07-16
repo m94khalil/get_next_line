@@ -19,9 +19,9 @@ char	*read_to_line(int fd, char *content)
 
 	size_rd = 1;
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (buffer == NULL)
+	if (!buffer)
 		return (NULL);
-	while (!ft_strchr(buffer, '\n') && size_rd != 0)
+	while (!ft_strchr(content, '\n') && size_rd != 0)
 	{
 		size_rd = read(fd, buffer, BUFFER_SIZE);
 		if (size_rd == -1)
@@ -36,7 +36,7 @@ char	*read_to_line(int fd, char *content)
 	return (content);
 }
 
-char	*get_to_line(char *content)
+char	*get_to_nl(char *content)
 {
 	int		i;
 	char	*line;
@@ -76,7 +76,7 @@ char	*file_remains(char *content, char *line)
 		free(content);
 		return (NULL);
 	}
-	remain = malloc(sizeof(char) * (ft_strlen(content) - i + 1));
+	remain = malloc(sizeof(char) * (j - i + 1));
 	if (remain == NULL)
 		return (NULL);
 	j = 0;
@@ -97,7 +97,7 @@ char	*get_next_line(int fd)
 	content = read_to_line(fd, content);
 	if (content == NULL)
 		return (NULL);
-	line = get_to_line(content);
+	line = get_to_nl(content);
 	content = file_remains(content, line);
 	return (line);
 }
