@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*read_to_line(int fd, char *content)
+char	*read_to_nl(int fd, char *content)
 {
 	char	*buffer;
 	int		size_rd;
@@ -94,26 +94,24 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	content = read_to_line(fd, content);
+	content = read_to_nl(fd, content);
 	if (content == NULL)
 		return (NULL);
 	line = get_to_nl(content);
 	content = file_remains(content, line);
 	return (line);
 }
-
+/*
 int main()
 {
 	int	fd;
 	char *line;
 	
 	fd = open("test.txt", O_RDONLY);
-	/*do {
-		line = get_next_line(fd);
-		printf("%s", line);
-	} while (line != NULL);
-	*/
+	line = get_next_line(fd);
+	printf("%s", line);
+	
 	printf("%lu, %s",read(fd, line, BUFFER_SIZE), line);
 	close(fd);
 	return (0);
-}
+}*/
