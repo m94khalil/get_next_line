@@ -6,7 +6,7 @@
 /*   By: mkhalil <mkhalil@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:30:52 by mkhalil           #+#    #+#             */
-/*   Updated: 2022/07/16 14:03:09 by mkhalil          ###   ########.fr       */
+/*   Updated: 2022/07/19 14:16:37 by mkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strchr(const char *str, int c)
 {
 	if (str == NULL)
 		return (NULL);
-	while (*str != (char)c && *str != '\0')
+	while (*str != '\0' && *str != (char)c)
 		str++;
 	if (*str == (char)c)
 		return ((char *)str);
@@ -37,12 +37,12 @@ char	*ft_strchr(const char *str, int c)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t		i;
+	int		i;
 	char	*join;
 
 	if (s1 == NULL)
 	{
-		s1 = malloc(sizeof(char));
+		s1 = (char *)malloc(sizeof(char));
 		s1[0] = '\0';
 	}
 	if (s1 == NULL || s2 == NULL)

@@ -6,7 +6,7 @@
 /*   By: mkhalil <mkhalil@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:35:11 by mkhalil           #+#    #+#             */
-/*   Updated: 2022/07/16 14:00:52 by mkhalil          ###   ########.fr       */
+/*   Updated: 2022/07/19 15:03:35 by mkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	*get_to_nl(char *content)
 	char	*line;
 
 	i = 0;
+	if (content[i] == '\0')
+		return (NULL);
 	while (content[i] != '\0' && content[i] != '\n')
 		i++;
 	if (content[i] == '\n')
@@ -61,22 +63,27 @@ char	*get_to_nl(char *content)
 	return (line);
 }
 
-char	*file_remains(char *content, char *line)
+char	*file_remains(char *content)
 {
+	/*char *remain;
+	remain = ft_strchr(content, '\n');
+	free(content);
+	return (NULL);*/
 	int		i;
 	int		j;
 	char	*remain;
-
-	if (line == 0)
-		return (content);
-	i = ft_strlen(line);
-	j = ft_strlen(content);
-	if (j - i == 0)
+	
+	i = 0;
+	while (content[i] != '\0' && content[i] != '\n')
+		i++;
+	if (content[i] == '\n')
+		i++;
+	if (content[i] == '\0')
 	{
 		free(content);
 		return (NULL);
 	}
-	remain = malloc(sizeof(char) * (j - i + 1));
+	remain = malloc(sizeof(char) * (ft_strlen(content) - i + 1));
 	if (remain == NULL)
 		return (NULL);
 	j = 0;
@@ -98,7 +105,7 @@ char	*get_next_line(int fd)
 	if (content == NULL)
 		return (NULL);
 	line = get_to_nl(content);
-	content = file_remains(content, line);
+	content = file_remains(content);
 	return (line);
 }
 /*
@@ -107,11 +114,12 @@ int main()
 	int	fd;
 	char *line;
 	
-	fd = open("test.txt", O_RDONLY);
+	fd = open("text.txt", O_RDONLY);
 	line = get_next_line(fd);
-	printf("%s", line);
+	printf("%s|", line);
 	
-	printf("%lu, %s",read(fd, line, BUFFER_SIZE), line);
+//	line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+//	printf("%lu, %p", read(fd, line, BUFFER_SIZE), line);
 	close(fd);
 	return (0);
 }*/

@@ -6,7 +6,7 @@
 /*   By: mkhalil <mkhalil@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 12:36:13 by mkhalil           #+#    #+#             */
-/*   Updated: 2022/07/16 13:48:38 by mkhalil          ###   ########.fr       */
+/*   Updated: 2022/07/19 12:43:51 by mkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*read_to_nl(int fd, char *content);
 char	*get_to_nl(char *content);
-char	*file_remains(char *content, char *line);
+char	*file_remains(char *content);
 char	*get_next_line(int fd);
 
 #endif
