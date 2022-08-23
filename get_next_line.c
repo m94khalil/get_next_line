@@ -6,7 +6,7 @@
 /*   By: mkhalil <mkhalil@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:35:11 by mkhalil           #+#    #+#             */
-/*   Updated: 2022/08/23 17:20:53 by mkhalil          ###   ########.fr       */
+/*   Updated: 2022/08/23 21:02:03 by mkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*file_remains(char *content)
 	int		i;
 	int		j;
 	char	*remain;
-	
+
 	i = 0;
 	while (content[i] != '\0' && content[i] != '\n')
 		i++;
