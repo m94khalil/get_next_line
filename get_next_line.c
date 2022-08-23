@@ -6,13 +6,13 @@
 /*   By: mkhalil <mkhalil@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:35:11 by mkhalil           #+#    #+#             */
-/*   Updated: 2022/07/19 15:03:35 by mkhalil          ###   ########.fr       */
+/*   Updated: 2022/08/23 17:20:53 by mkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*read_to_nl(int fd, char *content)
+char	*read_upto_nl(int fd, char *content)
 {
 	char	*buffer;
 	int		size_rd;
@@ -36,7 +36,7 @@ char	*read_to_nl(int fd, char *content)
 	return (content);
 }
 
-char	*get_to_nl(char *content)
+char	*get_upto_nl(char *content)
 {
 	int		i;
 	char	*line;
@@ -65,10 +65,6 @@ char	*get_to_nl(char *content)
 
 char	*file_remains(char *content)
 {
-	/*char *remain;
-	remain = ft_strchr(content, '\n');
-	free(content);
-	return (NULL);*/
 	int		i;
 	int		j;
 	char	*remain;
@@ -101,10 +97,10 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	content = read_to_nl(fd, content);
+	content = read_upto_nl(fd, content);
 	if (content == NULL)
 		return (NULL);
-	line = get_to_nl(content);
+	line = get_upto_nl(content);
 	content = file_remains(content);
 	return (line);
 }

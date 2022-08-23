@@ -6,7 +6,7 @@
 /*   By: mkhalil <mkhalil@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 11:30:52 by mkhalil           #+#    #+#             */
-/*   Updated: 2022/07/19 14:16:37 by mkhalil          ###   ########.fr       */
+/*   Updated: 2022/08/23 17:03:55 by mkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlen(const char *str)
 	if (str == NULL)
 		return (0);
 	len = 0;
-	while (str[len])
+	while (str[len] != '\0')
 		len++;
 	return (len);
 }
@@ -55,7 +55,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		join[i] = s1[i];
 	while (*s2)
 		join[i++] = *s2++;
-	join[i] = 0;
+	join[i] = '\0';
 	free(s1);
 	return (join);
 }
