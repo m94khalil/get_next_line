@@ -6,7 +6,7 @@
 /*   By: mkhalil <mkhalil@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:35:11 by mkhalil           #+#    #+#             */
-/*   Updated: 2022/08/23 21:02:03 by mkhalil          ###   ########.fr       */
+/*   Updated: 2023/01/01 14:01:40 by mkhalil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*read_upto_nl(int fd, char *content)
 			return (NULL);
 		}
 		buffer[size_rd] = '\0';
-		content = ft_strjoin(content, buffer);
+		content = gnl_strjoin(content, buffer);
 	}
 	free(buffer);
 	return (content);
