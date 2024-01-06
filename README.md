@@ -1,16 +1,37 @@
-# get_next_line
+# Get Next Line Implementation
 
-**Description:**
+## 🚀 Introduction
 
-The `get_next_line` project is a function designed for reading a line from a file descriptor. It is implemented in C and provides a simple yet effective solution for extracting lines of text from files or standard input. The function is capable of handling multiple file descriptors simultaneously, making it versatile for various applications.
+This functionality enables smooth line-by-line reading from file descriptors. The implementation comes equipped with utility functions for string manipulation and memory management.
 
-**Key Features:**
+## 📁 Project Structure
+
+- **`get_next_line.c`**: Core implementation of the `get_next_line` function.
+- **`get_next_line.h`**: Header file containing function prototypes and necessary includes.
+- **`get_next_line_utils.c`**: Utility functions for string manipulation and memory management.
+- **`get_next_line_bonus.c`** and **`get_next_line_bonus.h`**: Bonus files for additional features (support for multiple descriptors).
+
+## 🛠️ Usage
+
+To integrate the `get_next_line` function into your project, include the `get_next_line.h` header, and link with the appropriate source file(s).
+
+## ✨ Features
+
 - Efficient line-by-line reading from file descriptors.
-- Supports multiple file descriptors simultaneously.
-- Memory-efficient implementation with minimal resource leaks.
+- Support for handling multiple descriptors with minimal resource leaks.
+- Bonus files for additional features (`get_next_line_bonus.c` and `get_next_line_bonus.h`).
 
-**File Structure:**
-- `get_next_line.c`: The main implementation of the `get_next_line` function.
-- `get_next_line.h`: Header file containing function prototypes and necessary includes.
-- `get_next_line_bonus.c`: Bonus implementation for handling multiple file descriptors.
-- `get_next_line_bonus.h`: Bonus header file.
+## 🌟 Example
+
+```c
+#include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
+
+int main() {
+    int fd = open("text.txt", O_RDONLY);
+    char *line = get_next_line(fd);
+    printf("%s|", line);
+    close(fd);
+    return 0;
+}
